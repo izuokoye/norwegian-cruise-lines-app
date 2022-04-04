@@ -1,4 +1,4 @@
-# norwegian_cruise_lines
+# Norwegian Cruise Lines
 
 A new Flutter project.
 

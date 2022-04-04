@@ -3,23 +3,29 @@
 
 class ShipTypeModel {
   ShipTypeModel({
-      String? shipName, 
-      ShipFacts? shipFacts,}){
+    String? shipName,
+    ShipFacts? shipFacts,
+  }) {
     _shipName = shipName;
     _shipFacts = shipFacts;
-}
+  }
 
   ShipTypeModel.fromJson(dynamic json) {
     _shipName = json['shipName'];
-    _shipFacts = json['shipFacts'] != null ? ShipFacts.fromJson(json['shipFacts']) : null;
+    _shipFacts = json['shipFacts'] != null
+        ? ShipFacts.fromJson(json['shipFacts'])
+        : null;
   }
   String? _shipName;
   ShipFacts? _shipFacts;
-ShipTypeModel copyWith({  String? shipName,
-  ShipFacts? shipFacts,
-}) => ShipTypeModel(  shipName: shipName ?? _shipName,
-  shipFacts: shipFacts ?? _shipFacts,
-);
+  ShipTypeModel copyWith({
+    String? shipName,
+    ShipFacts? shipFacts,
+  }) =>
+      ShipTypeModel(
+        shipName: shipName ?? _shipName,
+        shipFacts: shipFacts ?? _shipFacts,
+      );
   String? get shipName => _shipName;
   ShipFacts? get shipFacts => _shipFacts;
 
@@ -32,6 +38,22 @@ ShipTypeModel copyWith({  String? shipName,
     return map;
   }
 
+  // for test purpose
+  @override
+  String toString() =>
+      'ShipTypeModel(shipName: $shipName, shipFacts: $shipFacts)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ShipTypeModel &&
+        other.shipName == shipName &&
+        other.shipFacts == shipFacts;
+  }
+
+  @override
+  int get hashCode => shipName.hashCode ^ shipFacts.hashCode;
 }
 
 /// passengerCapacity : "2,004 (double occupancy)"
@@ -40,13 +62,14 @@ ShipTypeModel copyWith({  String? shipName,
 
 class ShipFacts {
   ShipFacts({
-      String? passengerCapacity, 
-      String? crew, 
-      String? inauguralDate,}){
+    String? passengerCapacity,
+    String? crew,
+    String? inauguralDate,
+  }) {
     _passengerCapacity = passengerCapacity;
     _crew = crew;
     _inauguralDate = inauguralDate;
-}
+  }
 
   ShipFacts.fromJson(dynamic json) {
     _passengerCapacity = json['passengerCapacity'];
@@ -56,13 +79,16 @@ class ShipFacts {
   String? _passengerCapacity;
   String? _crew;
   String? _inauguralDate;
-ShipFacts copyWith({  String? passengerCapacity,
-  String? crew,
-  String? inauguralDate,
-}) => ShipFacts(  passengerCapacity: passengerCapacity ?? _passengerCapacity,
-  crew: crew ?? _crew,
-  inauguralDate: inauguralDate ?? _inauguralDate,
-);
+  ShipFacts copyWith({
+    String? passengerCapacity,
+    String? crew,
+    String? inauguralDate,
+  }) =>
+      ShipFacts(
+        passengerCapacity: passengerCapacity ?? _passengerCapacity,
+        crew: crew ?? _crew,
+        inauguralDate: inauguralDate ?? _inauguralDate,
+      );
   String? get passengerCapacity => _passengerCapacity;
   String? get crew => _crew;
   String? get inauguralDate => _inauguralDate;
@@ -74,5 +100,4 @@ ShipFacts copyWith({  String? passengerCapacity,
     map['inauguralDate'] = _inauguralDate;
     return map;
   }
-
 }

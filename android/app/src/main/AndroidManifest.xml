@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.izuokoye.norwegian_cruise_lines">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="norwegian_cruise_lines"
+        android:label="Norwegian Cruise Lines"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

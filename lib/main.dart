@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:norwegian_cruise_lines/constants.dart';
+import 'package:norwegian_cruise_lines/theme/custom_colors.dart';
 import 'package:norwegian_cruise_lines/views/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Norwegian Cruise Lines',
       theme: ThemeData(
-          primarySwatch: kPrimaryColor,
+          primarySwatch: primarySwatch,
           textTheme: GoogleFonts.interTextTheme(
             Theme.of(context).textTheme,
           )),
