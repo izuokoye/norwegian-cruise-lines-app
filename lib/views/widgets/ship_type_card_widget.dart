@@ -38,6 +38,8 @@ class ShipTypeCardWidget extends StatelessWidget {
             ),
             child: Row(
               children: [
+                // displays the ship name before and
+                // after fetching data from api endpoint
                 Text(
                   '${shipType?.shipName != null ? shipType?.shipName?.toUpperCase() : shipName}',
                   style: Styles.title2(
@@ -57,6 +59,8 @@ class ShipTypeCardWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+                // the first message to display when the
+                // app just loads and when the ship data is still empty
                 Visibility(
                   visible: shipType?.shipName == null && !isError,
                   child: Text(
@@ -67,6 +71,8 @@ class ShipTypeCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                // Message to be displayed when there is a http error
                 Visibility(
                   visible: isError,
                   child: Text(
@@ -107,6 +113,9 @@ class ShipTypeCardWidget extends StatelessWidget {
                         shipType?.shipFacts?.inauguralDate ?? 'Not available',
                   ),
                 ),
+
+                // the button to click to fetch the ship data from the api endpoint
+                // the text on the button changes based on different state of the app
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: !isLoading
@@ -124,6 +133,8 @@ class ShipTypeCardWidget extends StatelessWidget {
                             ),
                           ),
                         )
+                      // the progress bar shows up when
+                      // fetching data from the api
                       : const CircularProgressIndicator(),
                 ),
               ],

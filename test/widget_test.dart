@@ -2,44 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:norwegian_cruise_lines/constants.dart';
 import 'package:norwegian_cruise_lines/controllers/ship_controller.dart';
-import 'package:norwegian_cruise_lines/models/ship/ship_change_notifier.dart';
-import 'package:norwegian_cruise_lines/models/ship/ship_type_model.dart';
 import 'package:norwegian_cruise_lines/views/screens/home_screen.dart';
 
 class MockApiService extends Mock implements ShipController {}
 
 void main() {
-  late MockApiService mockApiService;
-  // system under test
-  late ShipChangeNotifier shipChangeNotifier;
-
-  setUp(() {
-    mockApiService = MockApiService();
-    shipChangeNotifier = ShipChangeNotifier(mockApiService);
-  });
-
   Widget createWidgetUnderTest() {
     return const ProviderScope(
       child: MaterialApp(
         home: HomeScreen(),
       ),
-    );
-  }
-
-  arrangeShipTypesServiceReturnOneShipTypeModel({
-    required int index,
-    required ShipFacts shipFacts,
-  }) {
-    when(() => mockApiService.getShipData(kCruiseShips[index])).thenAnswer(
-      (_) async {
-        await Future.delayed(const Duration(seconds: 2));
-        ShipTypeModel(
-          shipName: kCruiseShips[index],
-          shipFacts: shipFacts,
-        );
-      },
     );
   }
 

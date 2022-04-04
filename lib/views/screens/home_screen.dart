@@ -9,6 +9,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // this will watch for changes in the shipChangeNotifier Provider
     final shipNotifier = ref.watch(shipChangeNotifierProvider);
     return Scaffold(
       backgroundColor: Colors.white,
